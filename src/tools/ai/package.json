@@ -9,6 +9,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"validate": "tsx lib/image/validate-file.ts",
+		"check:braces": "tsx lib/utils/checkBraces.ts",
+		"check:localization": "tsx lib/utils/checkLocalization.ts",
+		"check:all": "npm run check:braces && npm run check:localization",
 		"start": "tsx index.ts"
 	},
 	"dependencies": {

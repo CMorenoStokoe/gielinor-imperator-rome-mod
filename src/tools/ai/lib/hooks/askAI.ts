@@ -1,10 +1,6 @@
 import 'dotenv/config'
 import { createAgent } from 'langchain'
-
-type Attachment = {
-	name: string
-	content: string
-}
+import type { Attachment } from '../../types/askAI'
 
 const agent = createAgent({ model: 'openai:gpt-4o-mini' })
 

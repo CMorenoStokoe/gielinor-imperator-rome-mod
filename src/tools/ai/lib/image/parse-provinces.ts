@@ -3,41 +3,14 @@ import * as fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { PNG } from 'pngjs'
-
-type RgbaColor = {
-	r: number
-	g: number
-	b: number
-	a: number
-}
-
-type PixelCoordinate = {
-	x: number
-	y: number
-}
-
-type RegionBounds = {
-	minX: number
-	minY: number
-	maxX: number
-	maxY: number
-}
-
-type Province = {
-	id: number
-	color: RgbaColor
-	colorKey: string
-	pixelCount: number
-	bounds: RegionBounds
-	pixels: PixelCoordinate[]
-	previewPngBase64: string
-}
-
-type ParsedProvinceMap = {
-	width: number
-	height: number
-	provinces: Province[]
-}
+import type {
+	RgbaColor,
+	PixelCoordinate,
+	RegionBounds,
+	Province,
+	ParsedProvinceMap,
+	ParseImageProvincesOptions,
+} from '../../types/parse-provinces'
 
 const REFERENCE_MAP_PATH = path.resolve(
 	path.dirname(fileURLToPath(import.meta.url)),
@@ -160,8 +133,10 @@ const createProvincePreviewPngBase64 = (
 
 export const parseImageProvinces = async (
 	extracted: Awaited<ReturnType<typeof extractImageRegions>>,
+	options: ParseImageProvincesOptions = {},
 ): Promise<ParsedProvinceMap> => {
-	const referenceMap = PNG.sync.read(fs.readFileSync(REFERENCE_MAP_PATH))
+	const skipPreviewForColorKeys = options.skipPreviewForColorKeys
+	let referenceMap: PNG | undefined
 	const provinces: Province[] = []
 
 	let provinceId = 1
@@ -170,6 +145,24 @@ export const parseImageProvinces = async (
 		if (isPureBlack(region.color)) {
 			continue
 		}
+
+		if (skipPreviewForColorKeys?.has(region.colorKey)) {
+			provinces.push({
+				id: provinceId,
+				color: region.color,
+				colorKey: region.colorKey,
+				pixelCount: region.pixelCount,
+				bounds: region.bounds,
+				pixels: region.pixels,
+				previewPngBase64: '',
+			})
+
+			provinceId += 1
+			continue
+		}
+
+		// Only loaded when at least one province still needs a preview rendered.
+		referenceMap ??= PNG.sync.read(fs.readFileSync(REFERENCE_MAP_PATH))
 
 		const previewPngBase64 = createProvincePreviewPngBase64(
 			region,

@@ -1,50 +1,13 @@
 import * as fs from 'node:fs/promises'
 import { PNG } from 'pngjs'
-
-type RgbaColor = {
-	r: number
-	g: number
-	b: number
-	a: number
-}
-
-type PixelCoordinate = {
-	x: number
-	y: number
-}
-
-type RegionBounds = {
-	minX: number
-	minY: number
-	maxX: number
-	maxY: number
-}
-
-type ExtractedRegion = {
-	color: RgbaColor
-	colorKey: string
-	pixelCount: number
-	bounds: RegionBounds
-	pixels: PixelCoordinate[]
-}
-
-type ExtractedImageRegions = {
-	width: number
-	height: number
-	data: Buffer
-	regions: ExtractedRegion[]
-	bitDepth: number
-	colorType: number
-	hasAnyTransparency: boolean
-}
-
-type LoadedPngImage = {
-	width: number
-	height: number
-	data: Buffer
-	bitDepth: number
-	colorType: number
-}
+import type {
+	RgbaColor,
+	PixelCoordinate,
+	RegionBounds,
+	ExtractedRegion,
+	ExtractedImageRegions,
+	LoadedPngImage,
+} from '../../types/extract'
 
 const makeColorKey = (r: number, g: number, b: number, a: number) =>
 	`${r},${g},${b},${a}`
