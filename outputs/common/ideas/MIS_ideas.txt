@@ -1,0 +1,17 @@
+MIS_ideas = {
+	category = economic
+
+	trigger = {
+		tag = MIS
+	}
+
+	MIS_idea_1 = {
+		civic_arts_influence_mult = 0.1
+	}
+	MIS_idea_2 = {
+		research_points_modifier = 0.05
+	}
+	MIS_idea_3 = {
+		global_population_capacity_modifier = 0.1
+	}
+}

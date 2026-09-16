@@ -1,0 +1,40 @@
+gielinor_asg_missions = {
+	header = "gielinor_asg_missions"
+	icon = "mission_generic_conquest"
+
+	potential = {
+		tag = ASG
+	}
+
+	dragon_slayer_scout_task = {
+		icon = "task_naval"
+
+		allow = {
+			owns = 95 # Crandor
+		}
+
+		on_completion = {
+			add_treasury = 50
+		}
+	}
+
+	dragon_slayer_confront_task = {
+		icon = "task_military"
+
+		requires = { dragon_slayer_scout_task }
+		final = yes
+
+		duration = 180
+
+		allow = {
+			owns_core_province = 95
+		}
+
+		on_completion = {
+			add_country_modifier = {
+				name = "elvarg_slain"
+				days = -1
+			}
+		}
+	}
+}

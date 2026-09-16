@@ -1,0 +1,17 @@
+ASG_ideas = {
+	category = military
+
+	trigger = {
+		tag = ASG
+	}
+
+	ASG_idea_1 = {
+		land_morale_modifier = 0.1
+	}
+	ASG_idea_2 = {
+		discipline = 0.05
+	}
+	ASG_idea_3 = {
+		manpower_recovery_speed = 0.1
+	}
+}

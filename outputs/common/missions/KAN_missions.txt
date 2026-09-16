@@ -1,0 +1,40 @@
+gielinor_kan_missions = {
+	header = "gielinor_kan_missions"
+	icon = "mission_generic_diplomacy"
+
+	potential = {
+		tag = KAN
+	}
+
+	underground_pass_task = {
+		icon = "task_political"
+
+		allow = {
+			is_at_war = no
+		}
+
+		on_completion = {
+			add_opinion = {
+				modifier = "elven_goodwill"
+				who = ROOT
+			}
+		}
+	}
+
+	regicide_task = {
+		icon = "task_political"
+
+		requires = { underground_pass_task }
+		final = yes
+
+		duration = 365
+
+		allow = {
+			owns = 85 # East Ardougne
+		}
+
+		on_completion = {
+			add_stability = 1
+		}
+	}
+}

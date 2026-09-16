@@ -1,0 +1,3 @@
+MIS = "countries/Misthalin.txt"
+ASG = "countries/Asgarnia.txt"
+KAN = "countries/Kandarin.txt"

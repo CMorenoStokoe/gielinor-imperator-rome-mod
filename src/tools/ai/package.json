@@ -11,7 +11,10 @@
 		"validate": "tsx lib/image/validate-file.ts",
 		"check:braces": "tsx lib/utils/checkBraces.ts",
 		"check:localization": "tsx lib/utils/checkLocalization.ts",
-		"check:all": "npm run check:braces && npm run check:localization",
+		"check:definitions": "tsx lib/utils/checkDefinitionIds.ts",
+		"check:outputs-braces": "tsx lib/utils/checkBraces.ts ../../../outputs",
+		"check:referential": "tsx lib/utils/checkReferentialIntegrity.ts",
+		"check:all": "npm run check:braces && npm run check:localization && npm run check:definitions && npm run check:outputs-braces && npm run check:referential",
 		"start": "tsx index.ts"
 	},
 	"dependencies": {

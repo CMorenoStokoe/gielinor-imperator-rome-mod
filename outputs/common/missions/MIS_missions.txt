@@ -1,0 +1,37 @@
+gielinor_mis_missions = {
+	header = "gielinor_mis_missions"
+	icon = "mission_generic_religious"
+
+	potential = {
+		tag = MIS
+	}
+
+	myreque_contact_task = {
+		icon = "task_religious"
+
+		allow = {
+			owns = 24 # Varrock
+		}
+
+		on_completion = {
+			add_treasury = 25
+		}
+	}
+
+	vampyre_threat_task = {
+		icon = "task_military"
+
+		requires = { myreque_contact_task }
+		final = yes
+
+		duration = 270
+
+		allow = {
+			owns_core_province = 24
+		}
+
+		on_completion = {
+			add_war_exhaustion = -1
+		}
+	}
+}

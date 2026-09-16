@@ -1,0 +1,5 @@
+owner = MIS
+controller = MIS
+add_core = MIS
+culture = misthalin
+religion = saradominist

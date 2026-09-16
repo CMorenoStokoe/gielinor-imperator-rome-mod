@@ -1,0 +1,61 @@
+{
+	"kingdoms": [
+		{
+			"name": "Misthalin",
+			"tag": "MIS",
+			"capital": { "provinceId": 24, "name": "Varrock" },
+			"ruler": "King Roald",
+			"deity": "Saradomin",
+			"provinces": [24, 46, 35, 43, 77, 100, 61, 65, 75, 94],
+			"summary": "Human kingdom centered on Varrock, spanning Lumbridge and the Wilderness borderlands."
+		},
+		{
+			"name": "Asgarnia",
+			"tag": "ASG",
+			"capital": { "provinceId": 71, "name": "Falador" },
+			"ruler": "Sir Amik Varze (regent, White Knights)",
+			"deity": "Saradomin",
+			"provinces": [71, 96, 103, 89, 98, 104, 111, 25, 9, 108],
+			"summary": "Militant human kingdom ruled by the White Knights of Falador, bordering the Wilderness and Port Sarim."
+		},
+		{
+			"name": "Kandarin",
+			"tag": "KAN",
+			"capital": { "provinceId": 85, "name": "East Ardougne" },
+			"ruler": "King Lathas",
+			"deity": "Saradomin",
+			"provinces": [85, 86, 66, 67, 27, 58, 39, 55, 78],
+			"summary": "Human kingdom around Ardougne, historically at odds with the elven nation of Tirannwn to the west."
+		}
+	],
+	"factions": [
+		{
+			"name": "White Knights",
+			"region": "Asgarnia",
+			"alignment": "Saradominist order of paladins"
+		},
+		{
+			"name": "Kinshra (Black Knights)",
+			"region": "Asgarnia/Wilderness",
+			"alignment": "Zamorakian rival order to the White Knights"
+		},
+		{
+			"name": "Iorwerth Clan",
+			"region": "Tirannwn",
+			"alignment": "Zamorakian elven faction opposing the Crown of Seren"
+		}
+	],
+	"deities": ["Saradomin", "Zamorak", "Guthix", "Seren", "Bandos", "Armadyl"],
+	"quests_referenced": [
+		{ "quest": "Dragon Slayer", "regions": ["Asgarnia", "Crandor"] },
+		{
+			"quest": "Underground Pass / Regicide",
+			"regions": ["Kandarin", "Tirannwn"]
+		},
+		{ "quest": "In Search of the Myreque", "regions": ["Morytania"] }
+	],
+	"known_gaps": [
+		"primary_culture/religion/technology_group identifiers used in history files (e.g. 'misthalin', 'saradominist', 'gielinor_tech') are placeholders and do not yet have corresponding common/cultures, common/religions, or common/technology definition files. A full modifier/culture/religion dictionary cross-check is out of scope for this pass.",
+		"Only 3 of many possible Gielinor kingdoms are represented (Misthalin, Asgarnia, Kandarin). Kharidian Desert, Kourend, Tirannwn, Fremennik Province, Morytania, etc. are documented in provinces_ids but have no generated country/history/mission files yet."
+	]
+}

@@ -5,6 +5,7 @@ import { extractImageRegions } from './lib/image/extract'
 import { getExistingProvinces } from './lib/image/get-existing-provinces'
 import { parseImageProvinces } from './lib/image/parse-provinces'
 import { checkBraces } from './lib/utils/checkBraces'
+import { checkDefinitionIds } from './lib/utils/checkDefinitionIds'
 import { checkLocalization } from './lib/utils/checkLocalization'
 
 const DEFINITION_CSV_PATH = 'output/definition.csv'
@@ -112,6 +113,7 @@ async function runProcess() {
 	console.log('Running lint checks...')
 	const braceIssues = checkBraces(path.resolve('../../assets'))
 	const localizationIssues = checkLocalization(path.resolve('../..'))
+	const definitionIssues = checkDefinitionIds(definitionsCsv)
 
 	for (const issue of braceIssues) {
 		console.error(
@@ -124,14 +126,19 @@ async function runProcess() {
 			`${path.relative('.', issue.file)}${location} - ${issue.message}`,
 		)
 	}
+	for (const issue of definitionIssues) {
+		console.error(`${DEFINITION_CSV_PATH}:${issue.line} - ${issue.message}`)
+	}
 
 	const lintPassed =
-		braceIssues.length === 0 && localizationIssues.length === 0
+		braceIssues.length === 0 &&
+		localizationIssues.length === 0 &&
+		definitionIssues.length === 0
 	if (lintPassed) {
 		console.log('Lint checks passed.')
 	} else {
 		console.error(
-			`Lint checks failed: ${braceIssues.length} brace issue(s), ${localizationIssues.length} localization issue(s).`,
+			`Lint checks failed: ${braceIssues.length} brace issue(s), ${localizationIssues.length} localization issue(s), ${definitionIssues.length} definition issue(s).`,
 		)
 		process.exitCode = 1
 	}
@@ -151,7 +158,7 @@ async function runProcess() {
 		`Definition file: ${DEFINITION_CSV_PATH} (${definitions.length} total entries)`,
 	)
 	console.log(
-		`Lint: ${braceIssues.length} brace issue(s), ${localizationIssues.length} localization issue(s)`,
+		`Lint: ${braceIssues.length} brace issue(s), ${localizationIssues.length} localization issue(s), ${definitionIssues.length} definition issue(s)`,
 	)
 	console.log('========================\n')
 }

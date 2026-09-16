@@ -1,0 +1,17 @@
+KAN_ideas = {
+	category = civic
+
+	trigger = {
+		tag = KAN
+	}
+
+	KAN_idea_1 = {
+		diplomatic_reputation = 1
+	}
+	KAN_idea_2 = {
+		trade_route_income_mult = 0.1
+	}
+	KAN_idea_3 = {
+		global_tax_modifier = 0.05
+	}
+}

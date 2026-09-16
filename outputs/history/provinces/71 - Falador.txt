@@ -1,0 +1,5 @@
+owner = ASG
+controller = ASG
+add_core = ASG
+culture = asgarnian
+religion = saradominist

@@ -1,0 +1,5 @@
+government = monarchy
+technology_group = gielinor_tech
+primary_culture = kandarin
+religion = saradominist
+capital = 85
